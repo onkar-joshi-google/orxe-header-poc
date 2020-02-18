@@ -121,6 +121,41 @@
         }
       }
     },
+    "shell-sdk": {
+      "projectType": "library",
+      "root": "projects/shell-sdk",
+      "sourceRoot": "projects/shell-sdk/src",
+      "prefix": "orxe",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/shell-sdk/tsconfig.lib.json",
+            "project": "projects/shell-sdk/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/shell-sdk/src/test.ts",
+            "tsConfig": "projects/shell-sdk/tsconfig.spec.json",
+            "karmaConfig": "projects/shell-sdk/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/shell-sdk/tsconfig.lib.json",
+              "projects/shell-sdk/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
   },
   "defaultProject": "orxe-shell"
 }
