@@ -1,24 +1,74 @@
+
 # ShellSdk
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+  
 
-## Code scaffolding
+A page orchestration library that provides routing, app resolver to resolve microapps with the help of Registry. This package drives the navigation, loading/unloading of microapps.
 
-Run `ng generate component component-name --project shell-sdk` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project shell-sdk`.
-> Note: Don't forget to add `--project shell-sdk` or else it will be added to the default project in your `angular.json` file. 
+  
+## Features
 
-## Build
+ - Page level navigation 
+ - Navigation between microapps
+ - Loads and injects microapps into DOM
+ - Initializes the CoreSDKs
+ - Provides OrxeRouterLink, OrxeRouterOutlet to handle microapps
 
-Run `ng build shell-sdk` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Publishing
+Import the core ShellSDKModule into the app and provide microapp configuration.
 
-After building your library with `ng build shell-sdk`, go to the dist folder `cd dist/shell-sdk` and run `npm publish`.
+	import { ShellSDKModule } from 'shell-sdk';
 
-## Running unit tests
+Add above module into your AppModule imports -  
+				
+	@NgModule({
+		...
+		imports: [
+			...
+			ShellSdkModule
+		],
+		...
+	})
+	export  class  AppModule  {  } 
 
-Run `ng test shell-sdk` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Providing static microapp route configuration
 
-## Further help
+`ShellSDKModule` can be initialized with microapp configuration. Microapp configuration needs to be defined first. This can be done with following - 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+	export  const  microAppRoutes: MicroAppRouteConfig[] = [
+		{
+			path:  '/search',
+			children: [
+				{
+					path:  'hotel',
+					tagName:  'app-hotel-search'
+				},
+				...
+			]
+		},
+		{
+			path:  '/results',
+			children: [
+				{
+					path:  'hotel',
+					tagName:  'app-hotel-results'
+				},
+				...
+			]
+		}
+	];
+
+Once route configuration is defined, ShellSDKModule can be import with -
+
+	 @NgModule({
+		...
+		imports: [
+			...
+			ShellSdkModule.forMicroApps({  routeConfigs:  microAppRoutes  })
+		],
+		...
+	})
+	export  class  AppModule  {  }
+
+This will allow ShellSDK to listen for URL changes and reacts to it by loading matched microapps. 

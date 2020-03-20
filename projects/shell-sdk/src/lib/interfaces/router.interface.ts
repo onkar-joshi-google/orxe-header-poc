@@ -1,3 +1,6 @@
+/**
+ * Acts as type for accepting route configuration
+ */
 export interface OrxeRoute {
   path: string;
   tagName?: string;
@@ -6,10 +9,17 @@ export interface OrxeRoute {
   default?: boolean;
 }
 
-export interface ResolvedRoute {
+/**
+ * Acts as a type for Context level routes. eg. `search/*`
+ */
+export interface MicroAppRouteConfig {
   path: string;
-  resolvedPath: string;
-  route: OrxeRoute;
-  query?: { [key: string]: string | number | boolean };
-  outlet?: string;
+  children: OrxeRoute[];
+}
+
+/**
+ * Acts as a type for injecting routes in module initialization
+ */
+export interface OrxeRouterModuleOptions {
+  routeConfigs?: MicroAppRouteConfig[];
 }

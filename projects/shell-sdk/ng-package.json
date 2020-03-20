@@ -3,5 +3,9 @@
   "dest": "../../dist/shell-sdk",
   "lib": {
     "entryFile": "src/shell-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@orxe-sdk/registry"
+  ]
 }
