@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlightComponent } from './flight/flight.component';
+import { ResultsComponent } from './results.component';
 import { Routes, RouterModule } from '@angular/router';
+import { OrxeRouterModule } from 'shell-sdk';
 
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: FlightComponent
+    component: ResultsComponent
   }
 ];
 
 @NgModule({
-  declarations: [FlightComponent],
+  declarations: [ResultsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    OrxeRouterModule
   ]
 })
-export class FlightsModule { }
+export class ResultsModule { }

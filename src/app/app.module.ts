@@ -1,25 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ShellSdkModule, OrxeRouterModule, OrxeRoute } from 'shell-sdk';
-
-const microappRoutes: OrxeRoute[] = [
-  {
-    path: '/',
-    tagName: 'app-header'
-  },
-  {
-    path: 'hotel',
-    tagName: 'app-hotel'
-  },
-  {
-    path: 'flight',
-    tagName: 'app-flight'
-  }
-];
+import { ShellSdkModule } from 'shell-sdk';
+import { microAppRoutes as microAppRoutes } from './orxe-routes';
 
 @NgModule({
   declarations: [
@@ -27,9 +13,11 @@ const microappRoutes: OrxeRoute[] = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

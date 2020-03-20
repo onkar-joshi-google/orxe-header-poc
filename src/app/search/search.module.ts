@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CruiseComponent } from './cruise/cruise.component';
+import { SearchComponent } from './search.component';
 import { Routes, RouterModule } from '@angular/router';
-
+import { OrxeRouterModule } from 'shell-sdk';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: CruiseComponent
+    component: SearchComponent
   }
 ];
 
 @NgModule({
-  declarations: [CruiseComponent],
+  declarations: [SearchComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    OrxeRouterModule
   ]
 })
-export class CruiseModule { }
+export class SearchModule { }

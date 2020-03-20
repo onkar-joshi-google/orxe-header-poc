@@ -6,19 +6,20 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    redirectTo: 'search/hotel',
+    // loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'hotel',
-    loadChildren: () => import('./hotels/hotels.module').then(m => m.HotelsModule)
+    path: 'search/:id',
+    loadChildren: () => import('./search/search.module').then(m => m.SearchModule)
   },
   {
-    path: 'flight',
-    loadChildren: () => import('./flights/flights.module').then(m => m.FlightsModule)
+    path: 'results/:id',
+    loadChildren: () => import('./results/results.module').then(m => m.ResultsModule)
   },
   {
-    path: 'cruise',
-    loadChildren: () => import('./cruise/cruise.module').then(m => m.CruiseModule)
+    path: 'details/:id',
+    loadChildren: () => import('./details/details.module').then(m => m.DetailsModule)
   }
 ];
 
