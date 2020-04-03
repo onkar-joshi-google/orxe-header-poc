@@ -5,7 +5,7 @@ import { MicroAppRouteConfig, OrxeRoute } from './interfaces';
   providedIn: 'root'
 })
 export class ShellService {
-  private appRoutes: OrxeRoute[] = [];
+  private _appRoutes: OrxeRoute[] = [];
 
   constructor() {
   }
@@ -19,13 +19,13 @@ export class ShellService {
       parent.children.forEach(child => {
         const path = (parent.path + '/' + child.path);
         child.path = path;
-        this.appRoutes.push(child);
+        this._appRoutes.push(child);
       });
     });
   }
 
   getRouteConfig(): OrxeRoute[] {
-    return this.appRoutes;
+    return this._appRoutes;
   }
 
 }

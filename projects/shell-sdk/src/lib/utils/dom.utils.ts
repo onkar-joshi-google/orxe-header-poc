@@ -6,7 +6,7 @@ export class DomService {
   /**
    * Instance of Angular Renderer2, used to manipulate the DOM
    */
-  private renderer: Renderer2;
+  private _renderer: Renderer2;
 
   /**
    * Injects RendererFactory to provide DOM manipulation
@@ -15,18 +15,18 @@ export class DomService {
   constructor(
     rendererFactory: RendererFactory2
   ) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+    this._renderer = rendererFactory.createRenderer(null, null);
   }
 
   /**
    * Creates and inserts tag into target element. Used to add microapp tags
    * @param target element into which a tag is inserted
-   * @param tagName
+   * @param tagName name of the tag
    */
   insertElement(target: ElementRef, tagName: string) {
-    const el = this.renderer.createElement(tagName);
-    target.nativeElement.innerHTML = "";
-    this.renderer.appendChild(target.nativeElement, el);
+    const el = this._renderer.createElement(tagName);
+    target.nativeElement.innerHTML = '';
+    this._renderer.appendChild(target.nativeElement, el);
   }
 
   /**
@@ -35,8 +35,8 @@ export class DomService {
    * @param target target element into which script tag is inserted
    */
   insertScript(src, target) {
-    const script = this.renderer.createElement('script');
+    const script = this._renderer.createElement('script');
     script.src = src;
-    this.renderer.appendChild(target.nativeElement, script);
+    this._renderer.appendChild(target.nativeElement, script);
   }
 }

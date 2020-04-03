@@ -21,7 +21,7 @@ export class RouterLinkComponent implements OnInit {
    * @param routerService OrxeRouter, to navigate to requested URL
    */
   constructor(
-    private routerService: RouterService
+    private _routerService: RouterService
   ) { }
 
   ngOnInit() { }
@@ -32,6 +32,6 @@ export class RouterLinkComponent implements OnInit {
    */
   navigate($event) {
     $event.preventDefault();
-    this.routerService.navigateTo(this.href);
+    this._routerService.navigateTo(this.href);
   }
 }

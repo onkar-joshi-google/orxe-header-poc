@@ -15,74 +15,74 @@ export class RouterService implements OnDestroy {
   /**
    * App level routes configuration
    */
-  private routeConfig: OrxeRoute[] = [];
+  private _routeConfig: OrxeRoute[] = [];
 
   /**
    * Holds currentUrl, used to load relevant microapps
    */
-  private currentUrl: string;
+  private _currentUrl: string;
 
   /**
    * Monitors microapp route changes
    */
-  private routeChangedSubject = new BehaviorSubject<OrxeRoute>(null);
+  private _routeChangedSubject = new BehaviorSubject<OrxeRoute>(null);
 
   /**
    * Observable to emit microapp route changes into outlets
    */
-  private onRouteChanged$ = this.routeChangedSubject.asObservable();
+  private _onRouteChanged$ = this._routeChangedSubject.asObservable();
 
   /**
    * TODO to be removed when global Router instance is available from common shared angular packages
    * Instance of microapp router
    */
-  private microAppRouter = new oxRouter();
+  private _microAppRouter = new oxRouter();
 
   /**
    * Maintains list of subscriptions in the service
    */
-  private subscriptions = new Subscription();
+  private _subscriptions = new Subscription();
 
   /**
    * Injects and provides required instances to RouterService
-   * @param ngRouter angular router instance to monitor URL changes
+   * @param _ngRouter angular router instance to monitor URL changes
    * @param shellService shell service instance
    * @param ngLocation angular location instance to monitor `path` changes in browser back/forward navigation
    */
   constructor(
-    private ngRouter: Router,
+    private _ngRouter: Router,
     shellService: ShellService,
     ngLocation: Location
   ) {
-    this.routeConfig = shellService.getRouteConfig();
+    this._routeConfig = shellService.getRouteConfig();
 
     /**
      * Subscribe to page level URL changes & check if matches with microapp route configuration
      */
-    const ngRouterSub = ngRouter.events.subscribe((event) => {
+    const ngRouterSub = _ngRouter.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const routeFound = this.findRoute(event.urlAfterRedirects
-          ? this.normalizeUrl(event.urlAfterRedirects)
-          : this.normalizeUrl(event.url));
+        const routeFound = this._findRoute(event.urlAfterRedirects
+          ? this._normalizeUrl(event.urlAfterRedirects)
+          : this._normalizeUrl(event.url));
 
         if (routeFound) {
-          this.updateCurrentUrl(routeFound.path);
-          this.routeChangedSubject.next(routeFound);
+          this._updateCurrentUrl(routeFound.path);
+          this._routeChangedSubject.next(routeFound);
         }
       }
     });
-    this.subscriptions.add(ngRouterSub);
+    this._subscriptions.add(ngRouterSub);
 
     /**
      * Callback function when back/forward navigation happens
      * Loads microapp based on path change
      */
     ngLocation.onUrlChange((url) => {
-      const routeFound = this.findRoute(this.normalizeUrl(url));
+      const routeFound = this._findRoute(this._normalizeUrl(url));
 
       if (routeFound) {
-        this.updateCurrentUrl(routeFound.path);
-        this.routeChangedSubject.next(routeFound);
+        this._updateCurrentUrl(routeFound.path);
+        this._routeChangedSubject.next(routeFound);
       }
     });
 
@@ -91,18 +91,18 @@ export class RouterService implements OnDestroy {
      * TODO to be removed when global Router instance is available from common shared angular packages
      * Helps navigating between microapps. Listens for route changes from microapps
      */
-    const microappRouterSub = this.microAppRouter.onRouteChanged.subscribe((data) => {
-      const url = this.normalizeUrl(data);
-      const routeFound = this.findRoute(url);
+    const microappRouterSub = this._microAppRouter.onRouteChanged.subscribe((data) => {
+      const url = this._normalizeUrl(data);
+      const routeFound = this._findRoute(url);
 
       if (routeFound) {
-        this.updateCurrentUrl(routeFound.path);
-        this.routeChangedSubject.next(routeFound);
-        ngLocation.go(url, this.normalizeParams(data));
+        this._updateCurrentUrl(routeFound.path);
+        this._routeChangedSubject.next(routeFound);
+        ngLocation.go(url, this._normalizeParams(data));
       }
     });
 
-    this.subscriptions.add(microappRouterSub);
+    this._subscriptions.add(microappRouterSub);
   }
 
   /**
@@ -110,8 +110,8 @@ export class RouterService implements OnDestroy {
    * @param outletName name of the outlet
    */
   getOutletApp(outletName: string): OrxeRoute {
-    return this.routeConfig.find(route => {
-      return route.outlet === outletName && route.path === this.currentUrl;
+    return this._routeConfig.find(route => {
+      return route.outlet === outletName && route.path === this._currentUrl;
     });
   }
 
@@ -120,22 +120,22 @@ export class RouterService implements OnDestroy {
    * @param url
    */
   navigateTo(url) {
-    this.ngRouter.navigate([url]);
+    this._ngRouter.navigate([url]);
   }
 
   /**
    * Returns route change observable. Used in outlets to load the microapp
    */
   onRouteChanged(): Observable<OrxeRoute> {
-    return this.onRouteChanged$;
+    return this._onRouteChanged$;
   }
 
   /**
    * Search and return requested microapp for a route
    * @param path
    */
-  private findRoute(path: string) {
-    return this.routeConfig.find(route => route.path === path);
+  private _findRoute(path: string) {
+    return this._routeConfig.find(route => route.path === path);
   }
 
   /**
@@ -143,7 +143,7 @@ export class RouterService implements OnDestroy {
    * Extracts actual route from the URL
    * @param url
    */
-  private normalizeUrl(url: string): string {
+  private _normalizeUrl(url: string): string {
     if (url) {
       const pos = url.indexOf('?');
       if (pos > -1) {
@@ -159,7 +159,7 @@ export class RouterService implements OnDestroy {
    * Extracts route params
    * @param url
    */
-  private normalizeParams(url: string) {
+  private _normalizeParams(url: string) {
     if (url) {
       const pos = url.indexOf('?');
       return url.substr(pos, url.length - 1);
@@ -170,11 +170,11 @@ export class RouterService implements OnDestroy {
    * Sets currentUrl to browsers URL
    * @param url
    */
-  private updateCurrentUrl(url: string) {
-    this.currentUrl = url;
+  private _updateCurrentUrl(url: string) {
+    this._currentUrl = url;
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this._subscriptions.unsubscribe();
   }
 }

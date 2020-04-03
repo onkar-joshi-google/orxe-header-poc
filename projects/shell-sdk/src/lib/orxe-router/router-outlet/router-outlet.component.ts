@@ -27,21 +27,24 @@ export class RouterOutletComponent implements OnInit, OnDestroy {
   /**
    * Subscription for OrxeRouter change events
    */
-  private routeChangeSub = null;
+  private _routeChangeSub = null;
 
   /**
    * Injects required services and sets up observers for route changes to load microapps
-   * @param routerService OrxeRouter service monitors route changes for outlets
-   * @param domService DomService used to inject scripts and microapp tags
+   * @param _routerService OrxeRouter service monitors route changes for outlets
+   * @param _domService DomService used to inject scripts and microapp tags
    */
-  constructor(private routerService: RouterService, private domService: DomService) {
-    this.routeChangeSub = routerService.onRouteChanged().subscribe(route => {
+  constructor(
+    private _routerService: RouterService,
+    private _domService: DomService
+  ) {
+    this._routeChangeSub = _routerService.onRouteChanged().subscribe(route => {
       if (route && this.name === 'default') {
         this.loadMicroApp(route);
       }
 
       if (this.name !== 'default') {
-        const appRoute = this.routerService.getOutletApp(this.name);
+        const appRoute = this._routerService.getOutletApp(this.name);
         if (appRoute) {
           this.loadMicroApp(appRoute);
         }
@@ -58,10 +61,10 @@ export class RouterOutletComponent implements OnInit, OnDestroy {
    */
   loadMicroApp(route) {
     if (this.content) {
-      this.domService.insertElement(this.content, route.tagName);
+      this._domService.insertElement(this.content, route.tagName);
       const appFound = apps.find((app) => app.appName === route.tagName);
       if (appFound) {
-        this.domService.insertScript(appFound.src, this.content);
+        this._domService.insertScript(appFound.src, this.content);
       }
     }
   }
@@ -70,6 +73,6 @@ export class RouterOutletComponent implements OnInit, OnDestroy {
    * Clean ups the subscriptions
    */
   ngOnDestroy() {
-    this.routeChangeSub.unsubscribe();
+    this._routeChangeSub.unsubscribe();
   }
 }
