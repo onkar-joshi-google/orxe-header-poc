@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
-import { Router as oxRouter } from '@microapp-router/dist/lib/router';
+import { Router as oxRouter } from 'orxe3-router/dist/lib/router';
 import { ShellService } from '../shell.service';
 import { OrxeRoute } from '../interfaces';
 
