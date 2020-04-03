@@ -7,7 +7,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'search/hotel',
-    // loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'search/:id',
