@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { ShellSdkModule } from 'shell-sdk';
 import { microAppRoutes as microAppRoutes } from './orxe-routes';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { microAppRoutes as microAppRoutes } from './orxe-routes';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes })
+    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes }),
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

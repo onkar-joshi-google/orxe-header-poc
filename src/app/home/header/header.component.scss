@@ -1,0 +1,18 @@
+@import '@bit/orxe_3.base.theme/theme/_theme.scss';
+
+.header {
+    background-color: $secondary;
+    width: 100%;
+    height: 48px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger {
+    top: 0;
+    left: 0;
+    height: 100%;
+    position: absolute;
+}

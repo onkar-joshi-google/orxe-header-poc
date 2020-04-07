@@ -1,0 +1,41 @@
+// Class
+// =============================================================================
+// Defines the CSS class used for orxe's grid.
+
+$orxe_grid_class: grid;
+
+// Enable
+// =============================================================================
+// Turn various features on/off as needed.
+
+$orxe_enable_grid_column_property: true;
+$orxe_enable_grid_row_property: true;
+$orxe_enable_justify_self_property: true;
+$orxe_enable_align_self_property: true;
+
+// Grid Data
+// =============================================================================
+// Defines the number of breakpoints and defaults used for each property at
+// that breakpoint. The slug for each breakpoint will be used in the custom
+// properties as a responsive reference (e.g. "--gap-grid"). The value of the
+// first breakpoint must be set to "0" to assign the mobile-first values.
+
+$orxe_grid: (
+  'grid': (
+    'breakpoint': 0,
+    'grid_gap': 16px,
+    'grid_auto_flow': row,
+    'grid_auto_columns': auto,
+    'grid_auto_rows': auto,
+    'repeat_columns': 4,
+    'repeat_columns_size': 1fr,
+    'justify_content': space-evenly,
+    'justify_items': stretch,
+    'align_content': center,
+    'align_items': stretch,
+    'grid_column': auto,
+    'grid_row': auto,
+    'justify_self': auto,
+    'align_self': auto,
+  ),
+);

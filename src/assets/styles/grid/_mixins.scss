@@ -1,0 +1,13 @@
+@mixin orxe-breakpoint($breakpoint) {
+  @if ($breakpoint != 0) {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin make-grid() {
+  display: grid;
+}

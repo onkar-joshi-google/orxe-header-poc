@@ -1,21 +1,24 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: HomeComponent
-  }
-];
+import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
+import '@bit/orxe_3.base.tabs';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+    HeaderComponent
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule
+  ],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  exports: [
+    HomeComponent
   ]
 })
 export class HomeModule { }
