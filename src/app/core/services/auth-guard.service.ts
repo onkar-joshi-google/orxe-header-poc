@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { HttpHeaders } from '@orxe-sdk/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { ShellService } from 'shell-sdk';
 import { HttpService } from './http.service';
 
@@ -36,10 +36,11 @@ export class AuthGuardService implements CanActivate {
           this._shellService.initCoreSDK(data.Token);
           return true;
         } else {
-          console.error('Failed to create temporary session');
+          console.error('Failed to create temporary session. Session is required to run the application.');
           return false;
         }
-      })
+      }),
+      catchError((err, caught) =>  { console.error(err.message); return caught; })
     );
   }
 
