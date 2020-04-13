@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"],
-      "@core/*": ["src/app/core/*"],
+      "@orxe-core/*": ["src/app/core/*"],
       "@env/*": ["src/environments/*"],
       "shell-sdk": [
         "dist/shell-sdk"
