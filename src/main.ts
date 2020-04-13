@@ -3,8 +3,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import '@bit/orxe_3.base.tabs';
-import '@bit/orxe_3.base.header';
+
+import './components';
 
 if (environment.production) {
   enableProdMode();

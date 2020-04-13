@@ -1,25 +1,17 @@
-<orxe-header fixed left-icon="left" right-icon="right"
-      logo-path="https://images.squarespace-cdn.com/content/v1/5bfc637ee17ba3575a9ca823/1581000302611-76DMMC15WX9CZFD59HBC/ke17ZwdGBToddI8pDm48kJlAzLhSrM6x7ToZ5QmhDpwUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcv1KzWnXa5uwExy9477qI1Kuh3UGvhQrwqnFk1-0NKPksHOlkSAin2SQeO-uywbjm/Screen+Shot+2020-02-06+at+9.44.31+AM.png?format=1000w"
-      alt-text="cxLoylity Logo">
-</orxe-header>
 <div class="orxe-grid">
   <div class="span-4">
       <orxe-tab name="tab2" orientation="horizontal">
-          <orxe-tab-item class="logo" active [routerLink]="['search/flight']">
-              <img src="../../assets/icons/ic-flight/20px.svg" slot="tab-item-icon">
+          <orxe-tab-item class="logo" active [routerLink]="'search/flight'">
+              <orxe-icon icon="ic-flight" slot="tab-item-icon"></orxe-icon>
               <span slot="tab-item-label">Flights</span>
           </orxe-tab-item>
-          <orxe-tab-item class="logo" [routerLink]="['search/hotel']">
-              <img src="../../assets/icons/ic-hotel/20px.svg" slot="tab-item-icon">
+          <orxe-tab-item class="logo" [routerLink]="'search/hotel'">
+            <orxe-icon icon="ic-hotel" slot="tab-item-icon"></orxe-icon>
               <span slot="tab-item-label">Hotels</span>
           </orxe-tab-item>
-          <orxe-tab-item class="logo" [routerLink]="'/search/cars'">
-              <img src="../../assets/icons/ic-car/20px.svg" slot="tab-item-icon">
+          <orxe-tab-item class="logo" [routerLink]="'/search/car'">
+            <orxe-icon icon="ic-car" slot="tab-item-icon"></orxe-icon>
               <span slot="tab-item-label">Cars</span>
-          </orxe-tab-item>
-          <orxe-tab-item class="logo" [routerLink]="['search/adult']">
-              <img src="../../assets/icons/ic-activity/20px.svg" slot="tab-item-icon">
-              <span slot="tab-item-label">Adults</span>
           </orxe-tab-item>
       </orxe-tab>
   </div>
