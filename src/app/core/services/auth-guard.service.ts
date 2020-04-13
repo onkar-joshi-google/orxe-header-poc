@@ -27,8 +27,6 @@ export class AuthGuardService implements CanActivate {
    * TODO to be removed from production and development when Site Launcher is ready
    */
   canActivate(): Observable<boolean> {
-    console.log('Creating temporary session for development');
-
     return this._http.post(this._createSessionUrl, SESSION_REQUEST, this._headers).pipe(
       map(data => {
         if (data && data.hasOwnProperty('Token')) {

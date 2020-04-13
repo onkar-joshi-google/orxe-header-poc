@@ -26,15 +26,10 @@ export class ShellService {
   }
 
   initCoreSDK(sessionId: string) {
-    console.log('SessionId is ', sessionId);
-
-    console.log('Initializing AppState SDK');
     AppState.init({
       prefix: 'orxe',
       allowNull: false
     });
-
-    console.log('Setting SessionID for AppState SDK');
     AppState.set('sessionId', sessionId);
   }
 
