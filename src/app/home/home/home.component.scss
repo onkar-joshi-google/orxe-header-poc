@@ -1,10 +1,16 @@
 @import '../../../assets/styles/grid/grid.scss';
 @import '@bit/orxe_3.base.theme/theme/_spacing.scss';
 
+// To be removed once header is set properly.
+orxe-header {
+  display: block;
+  height: 48px;
+}
+
 .span-4 {
   --col-grid: span 4;
 }
- 
+
 .span-2 {
   --col-grid: span 2;
 }
