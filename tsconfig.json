@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@app": ["src/app"],
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"],
       "shell-sdk": [
         "dist/shell-sdk"
       ],
