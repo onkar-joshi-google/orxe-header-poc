@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~9.0.4",
     "@angular/platform-browser-dynamic": "~9.0.4",
     "@angular/router": "~9.0.4",
+    "@orxe-sdk/app-state": "0.2.0",
+    "@orxe-sdk/http": "0.1.2",
     "@bit/orxe_3.base.header": "^0.2.2",
     "@bit/orxe_3.base.tabs": "^0.2.1",
     "@bit/orxe_3.base.theme": "^0.2.31",

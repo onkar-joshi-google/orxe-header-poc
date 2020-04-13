@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MicroAppRouteConfig, OrxeRoute } from './interfaces';
+import { AppState } from '@orxe-sdk/app-state';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class ShellService {
         this._appRoutes.push(child);
       });
     });
+  }
+
+  initCoreSDK(sessionId: string) {
+    AppState.init({
+      prefix: 'orxe',
+      allowNull: false
+    });
+    AppState.set('sessionId', sessionId);
   }
 
   getRouteConfig(): OrxeRoute[] {
