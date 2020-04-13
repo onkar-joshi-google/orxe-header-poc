@@ -1,7 +1,7 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthGuardService } from '@app/core/services/auth-guard.service';
-import { HttpService } from '@app/core/services/http.service';
+import { AuthGuardService } from '@core/services/auth-guard.service';
+import { HttpService } from '@core/services/http.service';
 
 @NgModule({
   declarations: [],
