@@ -1,24 +1,6 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ORXe Shell</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="search/hotel" [routerLink]="['search/hotel']" routerLinkActive="active" class="nav-link">Hotel</a>
-
-        </li>
-        <li class="nav-item">
-          <a href="search/flight" [routerLink]="['search//flight']" routerLinkActive="active"
-            class="nav-link">Flight</a>
-
-        </li>
-        <li class="nav-item">
-          <a href="search/cruise" [routerLink]="['search//cruise']" routerLinkActive="active"
-            class="nav-link">Cruise</a>
-
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
+<orxe-header fixed left-icon="ic-menu"
+      logo-path="https://images.squarespace-cdn.com/content/v1/5bfc637ee17ba3575a9ca823/1581000302611-76DMMC15WX9CZFD59HBC/ke17ZwdGBToddI8pDm48kJlAzLhSrM6x7ToZ5QmhDpwUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcv1KzWnXa5uwExy9477qI1Kuh3UGvhQrwqnFk1-0NKPksHOlkSAin2SQeO-uywbjm/Screen+Shot+2020-02-06+at+9.44.31+AM.png?format=1000w"
+      alt-text="cxLoylity Logo">
+</orxe-header>
+<app-home></app-home>
 <router-outlet></router-outlet>
