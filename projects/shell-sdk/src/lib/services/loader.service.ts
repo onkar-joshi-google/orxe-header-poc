@@ -72,12 +72,7 @@ export class LoaderService {
    */
   private _updateGlobalDepState() {
     const isAppLoading = this._globalDeps.find(({ status }) => status === Status.LOADING);
-
-    if (isAppLoading) {
-      this._depLoadSubject.next(false);
-    } else {
-      this._depLoadSubject.next(true);
-    }
+    this._depLoadSubject.next(!isAppLoading);
   }
 
   /**
