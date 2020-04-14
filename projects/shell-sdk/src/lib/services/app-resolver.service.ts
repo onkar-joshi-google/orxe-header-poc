@@ -24,12 +24,14 @@ export class AppResolverService {
   ) {
     this.getAllApps();
 
+    // Load all main application level dependencies
     Registry.getAppDependencies().subscribe((appDeps: AppDependency[]) => {
-      this._loader.setGlobalDeps(appDeps);
+      this._loader.setGlobalDependencies(appDeps);
     });
 
-    this._loader.onDepsLoaded().subscribe(loaded => {
-      if (1) {
+    // check if dependecies are loaded and then resolve the app
+    this._loader.onDependenciesLoaded().subscribe(loaded => {
+      if (loaded) {
         this._routerService.onRouteChanged().subscribe((route) => {
           this.resolveApp(route.tagName);
         });

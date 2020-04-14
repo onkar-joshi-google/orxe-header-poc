@@ -20,7 +20,7 @@ export class LoaderService {
    * Starts loading application dependencies
    * @param globalDeps array of application dependencies
    */
-  setGlobalDeps(globalDeps: AppDependency[]) {
+  setGlobalDependencies(globalDeps: AppDependency[]) {
     if (globalDeps) {
       globalDeps.forEach(dep => {
         dep.status = Status.LOADING;
@@ -40,7 +40,7 @@ export class LoaderService {
   /**
    * Returns global dependency Observable. Microapps are loaded only after this streams `TRUE`
    */
-  onDepsLoaded() {
+  onDependenciesLoaded() {
     return this._depsLoaded$;
   }
 
