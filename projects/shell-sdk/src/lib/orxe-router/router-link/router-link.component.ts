@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouterService } from '../router.service';
+import { RouterService } from '../../services';
 
 @Component({
   selector: 'orxe-router-link',
@@ -18,7 +18,7 @@ export class RouterLinkComponent implements OnInit {
 
   /**
    * Injects and provide router instance
-   * @param routerService OrxeRouter, to navigate to requested URL
+   * @param _routerService OrxeRouter, to navigate to requested URL
    */
   constructor(
     private _routerService: RouterService
