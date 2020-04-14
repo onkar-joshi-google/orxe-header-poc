@@ -3,25 +3,31 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
 
 import { ShellSdkModule } from 'shell-sdk';
-import { microAppRoutes as microAppRoutes } from './orxe-routes';
-import { CoreModule } from './core/core.module';
+import { microAppRoutes } from './orxe-routes';
+import { CoreModule } from '@orxe-core/core.module';
+import { environment } from '@env/environment';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes })
-    HomeModule
+    HomeModule,
+    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { endpoint: environment.baseUrl } })
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [
+    AppComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

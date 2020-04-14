@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '@orxe-core/services';
+import { LandingComponent } from './landing/landing.component';
 
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'search/hotel',
+    redirectTo: 'landing'
+  },
+  {
+    path: 'landing',
+    canActivate: [AuthGuardService],
+    component: LandingComponent
   },
   {
     path: 'search/:id',
-    canActivate: [AuthGuardService],
     loadChildren: () => import('./search/search.module').then(m => m.SearchModule)
   },
   {
