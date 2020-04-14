@@ -2,9 +2,10 @@
   "name": "orxe-shell",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "serve:sdk": "ng build shell-sdk --watch",
+    "serve:app": "ng serve",
+    "build:sdk": "ng build shell-sdk",
+    "build:app": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
