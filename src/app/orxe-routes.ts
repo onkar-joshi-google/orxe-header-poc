@@ -63,3 +63,6 @@ export const microAppRoutes: MicroAppRouteConfig[] = [
     ]
   }
 ];
+
+// TODO Default route can be dynamic, should be changed when Configuration/Settings SDK is implemented
+export const DEFAULT_ROUTE = 'search/hotel';

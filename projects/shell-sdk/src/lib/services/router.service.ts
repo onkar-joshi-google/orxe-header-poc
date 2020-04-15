@@ -1,10 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, Subject } from 'rxjs';
 
 import { Router as oxRouter } from 'orxe3-router/dist/lib/router';
-import { ShellService } from '../shell.service';
 import { OrxeRoute } from '../interfaces';
 
 @Injectable({
@@ -25,7 +24,7 @@ export class RouterService implements OnDestroy {
   /**
    * Monitors microapp route changes
    */
-  private _routeChangedSubject = new BehaviorSubject<OrxeRoute>(null);
+  private _routeChangedSubject = new Subject<OrxeRoute>();
 
   /**
    * Observable to emit microapp route changes into outlets
@@ -51,10 +50,8 @@ export class RouterService implements OnDestroy {
    */
   constructor(
     private _ngRouter: Router,
-    shellService: ShellService,
     ngLocation: Location
   ) {
-    this._routeConfig = shellService.getRouteConfig();
 
     /**
      * Subscribe to page level URL changes & check if matches with microapp route configuration
@@ -103,6 +100,10 @@ export class RouterService implements OnDestroy {
     });
 
     this._subscriptions.add(microappRouterSub);
+  }
+
+  setMicroappConfig(routes: OrxeRoute[]) {
+    this._routeConfig = routes;
   }
 
   /**

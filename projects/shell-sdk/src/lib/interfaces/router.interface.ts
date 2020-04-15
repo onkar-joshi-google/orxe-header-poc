@@ -17,9 +17,3 @@ export interface MicroAppRouteConfig {
   children: OrxeRoute[];
 }
 
-/**
- * Acts as a type for injecting routes in module initialization
- */
-export interface OrxeRouterModuleOptions {
-  routeConfigs?: MicroAppRouteConfig[];
-}

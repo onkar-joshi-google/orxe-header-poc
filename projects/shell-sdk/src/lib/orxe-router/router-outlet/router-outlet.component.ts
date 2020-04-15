@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { RouterService } from '../router.service';
-import { DomService } from '../../utils/dom.utils';
-
-import { apps } from '../../app-list';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { DomService, AppResolverService } from '../../services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'orxe-router-outlet',
@@ -12,7 +10,7 @@ import { apps } from '../../app-list';
 /**
  * Generates a outlet element that hosts the microapps in a page
  */
-export class RouterOutletComponent implements OnInit, OnDestroy {
+export class RouterOutletComponent implements OnInit{
 
   /**
    * Used to assign a name to the outlet instance
@@ -25,33 +23,18 @@ export class RouterOutletComponent implements OnInit, OnDestroy {
   @ViewChild('content', { static: true }) content: ElementRef;
 
   /**
-   * Subscription for OrxeRouter change events
-   */
-  private _routeChangeSub = null;
-
-  /**
    * Injects required services and sets up observers for route changes to load microapps
-   * @param _routerService OrxeRouter service monitors route changes for outlets
+   * @param _appResolver AppResolver service monitors app change for outlets
    * @param _domService DomService used to inject scripts and microapp tags
    */
   constructor(
-    private _routerService: RouterService,
+    private _appResolver: AppResolverService,
     private _domService: DomService
   ) {
-    this._routeChangeSub = _routerService.onRouteChanged().subscribe(route => {
-      if (route && this.name === 'default') {
-        this.loadMicroApp(route);
-      }
-
-      if (this.name !== 'default') {
-        const appRoute = this._routerService.getOutletApp(this.name);
-        if (appRoute) {
-          this.loadMicroApp(appRoute);
-        }
-      }
+    this._appResolver.getAppResolved().subscribe(app => {
+      this.loadMicroApp(app);
     });
   }
-
 
   ngOnInit() { }
 
@@ -59,20 +42,11 @@ export class RouterOutletComponent implements OnInit, OnDestroy {
    * Injects microapp bundle and tag into the DOM
    * @param route a requested route for which microapp needs to be loaded
    */
-  loadMicroApp(route) {
+  loadMicroApp(app) {
+    // TODO Add logic to microapp deps first by using loader service.
     if (this.content) {
-      this._domService.insertElement(this.content, route.tagName);
-      const appFound = apps.find((app) => app.appName === route.tagName);
-      if (appFound) {
-        this._domService.insertScript(appFound.src, this.content);
-      }
+      this._domService.insertElement(this.content, app.tagName);
+      this._domService.insertApp(app.bundle, this.content);
     }
-  }
-
-  /**
-   * Clean ups the subscriptions
-   */
-  ngOnDestroy() {
-    this._routeChangeSub.unsubscribe();
   }
 }
