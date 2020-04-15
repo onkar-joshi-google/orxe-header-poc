@@ -20,11 +20,16 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+<<<<<<< HEAD
     HomeModule,
     ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { endpoint: environment.baseUrl } })
   ],
   bootstrap: [
     AppComponent
+=======
+    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes }),
+    HomeModule
+>>>>>>> 0cb8378... feat: added fonts
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
