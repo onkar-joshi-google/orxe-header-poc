@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: Proxima Nova;
+  src: url("assets/fonts/Proxima Nova Regular/Proxima Nova Regular.otf");
+}
+
+@font-face {
+  font-family: Proxima Nova;
+  src: url("assets/fonts/Proxima Nova Regular Italic/Proxima Nova Regular Italic.otf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Proxima Nova;
+  font-weight: bold;
+  src: url("assets/fonts/Proxima Nova Semi Bold/Proxima Nova Semi Bold.otf");
+}
+
+@font-face {
+  font-family: Proxima Nova;
+  src: url("assets/fonts/Proxima Nova Semi Bold Italic/Proxima Nova Semi Bold Italic.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+html {
+  font-family: "Proxima Nova", "sans-serif";
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+}

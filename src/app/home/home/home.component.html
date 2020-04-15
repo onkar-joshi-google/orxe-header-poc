@@ -1,18 +1,24 @@
-<div class="orxe-grid">
-  <div class="span-4">
-      <orxe-tab name="tab2" orientation="horizontal">
-          <orxe-tab-item class="logo" active [routerLink]="'search/flight'">
-              <orxe-icon icon="ic-flight" slot="tab-item-icon"></orxe-icon>
-              <span slot="tab-item-label">Flights</span>
-          </orxe-tab-item>
-          <orxe-tab-item class="logo" [routerLink]="'search/hotel'">
-            <orxe-icon icon="ic-hotel" slot="tab-item-icon"></orxe-icon>
-              <span slot="tab-item-label">Hotels</span>
-          </orxe-tab-item>
-          <orxe-tab-item class="logo" [routerLink]="'/search/car'">
-            <orxe-icon icon="ic-car" slot="tab-item-icon"></orxe-icon>
-              <span slot="tab-item-label">Cars</span>
-          </orxe-tab-item>
-      </orxe-tab>
-  </div>
+<div class="tabs-container">
+  <orxe-tab name="tab2" orientation="horizontal">
+    <orxe-tab-item active [routerLink]="'search/flight'">
+      <orxe-icon icon="ic-flight" slot="tab-item-icon" size="small"></orxe-icon>
+      <span slot="tab-item-label">Flights</span>
+    </orxe-tab-item>
+    <orxe-tab-item [routerLink]="'search/hotel'">
+      <orxe-icon icon="ic-hotel" slot="tab-item-icon" size="small"></orxe-icon>
+      <span slot="tab-item-label">Hotels</span>
+    </orxe-tab-item>
+    <orxe-tab-item [routerLink]="'/search/car'">
+      <orxe-icon icon="ic-car" slot="tab-item-icon" size="small"></orxe-icon>
+      <span slot="tab-item-label">Cars</span>
+    </orxe-tab-item>
+    <orxe-tab-item [routerLink]="'/search/activity'">
+      <orxe-icon
+        icon="ic-activity"
+        slot="tab-item-icon"
+        size="small"
+      ></orxe-icon>
+      <span slot="tab-item-label">Activities</span>
+    </orxe-tab-item>
+  </orxe-tab>
 </div>
