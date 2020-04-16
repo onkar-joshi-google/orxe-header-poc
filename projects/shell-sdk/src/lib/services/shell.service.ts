@@ -3,6 +3,8 @@ import { MicroAppRouteConfig, OrxeRoute, AppConfig } from '../interfaces';
 import { AppState } from '@orxe-sdk/app-state';
 import { AppResolverService } from './app-resolver.service';
 import { Registry } from '@orxe-sdk/registry';
+import { Logger } from '@orxe-sdk/logging';
+
 import { RouterService } from './router.service';
 import { ApiEndpoints } from '../core.constants';
 @Injectable({
@@ -37,13 +39,19 @@ export class ShellService {
   }
 
   initCoreSDK(sessionId: string) {
+    // initialize the AppState SDK
     AppState.init({
       prefix: 'orxe',
       allowNull: false
     });
+    // set sesionId in AppState, this is used by other SDKs internally
     AppState.set('sessionId', sessionId);
 
-    Registry.init(this._appConfig.endpoint + ApiEndpoints.REGISTRY);
+    // initialize the Registry SDK with endpoint
+    Registry.init(this._appConfig.baseUrl + ApiEndpoints.REGISTRY);
+
+    // initialize the Logging SDK with endpoint
+    Logger.init(this._appConfig.baseUrl + ApiEndpoints.LOGGING);
 
     this._appResolver.getAllApps();
   }
