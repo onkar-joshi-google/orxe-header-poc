@@ -4,7 +4,7 @@ import { MicroAppRouteConfig } from './router.interface';
  * ORXe app config
  */
 export interface AppConfig {
-  endpoint: string;
+  baseUrl: string;
 }
 
 /**
