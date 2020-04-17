@@ -3,7 +3,8 @@
  * eg. Registry BFF, Logger BFF
  */
 export class ApiEndpoints  {
-  public static REGISTRY = 'api/orxe/registry';
+  public static REGISTRY = '/api/orxe/registry';
+  public static LOGGING = '/api/orxe/log';
 }
 
 // any other core constants

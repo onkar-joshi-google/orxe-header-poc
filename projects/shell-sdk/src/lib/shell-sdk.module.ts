@@ -37,7 +37,7 @@ export class ShellSdkModule {
     /**
      * Throw error if baseURL is not provided by the main application.
      */
-    if (!appConfig.endpoint) {
+    if (!appConfig.baseUrl) {
       throw new Error('AppConfig is invalid. baseURL is not provided.');
     }
 

@@ -21,7 +21,7 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     CoreModule,
     HomeModule,
-    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { endpoint: environment.baseUrl } })
+    ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { baseUrl: environment.baseUrl } })
   ],
   bootstrap: [
     AppComponent
