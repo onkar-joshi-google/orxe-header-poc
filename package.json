@@ -32,6 +32,8 @@
     "@orxe-sdk/registry": "0.2.1",
     "@orxe-sdk/logging": "0.2.1",
     "@webcomponents/webcomponentsjs": "^2.4.1",
+    "@orxe-culture/angular": "^1.0.0",
+    "@orxe-culture/core": "^1.0.0",
     "document-register-element": "^1.7.2",
     "orxe3-router": "0.0.1",
     "rxjs": "~6.5.4",
