@@ -21,6 +21,10 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@orxe-core/*": ["src/app/core/*"],
+      "@orxe-shared/*": ["src/app/shared/*"],
+      "@orxe-shared-components/*": ["src/app/shared/components/*"],
+      "@orxe-shared-directives/*": ["src/app/shared/directives/*"],
+      "@orxe-shared-pipes/*": ["src/app/shared/pipes/*"],
       "@env/*": ["src/environments/*"],
       "shell-sdk": [
         "dist/shell-sdk"
