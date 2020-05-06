@@ -2,5 +2,7 @@
       logo-path="assets/logo/src_assets_logo_cxloyalty-logo-footer.png"
       alt-text="cxLoyalty Logo">
 </orxe-header>
+<button (click)="toggleMenu(true)">Open Menu</button>
 <app-home></app-home>
+<app-menu [isOpen]="isMenuOpen" (menuClosed)="toggleMenu(false)"></app-menu>
 <router-outlet></router-outlet>

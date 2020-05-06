@@ -10,6 +10,7 @@ import { microAppRoutes } from './orxe-routes';
 import { CoreModule } from '@orxe-core/core.module';
 import { environment } from '@env/environment';
 import { HomeModule } from './home/home.module';
+import { SharedModule } from '@orxe-shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     CoreModule,
     HomeModule,
+    SharedModule,
     ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { baseUrl: environment.baseUrl } })
   ],
   bootstrap: [
