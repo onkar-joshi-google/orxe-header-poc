@@ -1,0 +1,49 @@
+
+<div class="menu-container"
+     [ngClass]="{'menu-container--is-open': isOpen, 'menu-container--is-closed': !isOpen }"
+     *ngIf="isOpen">
+  <div class="menu">
+    <div class="menu--header-section">
+      <orxe-button
+        data-testid="clear-button"
+        class="input--clear-button"
+        kind="iconOnly"
+        icon="ic-close"
+        aria-live="polite"
+        a11y-label="close menu button"
+        size="small"
+        (click)="closeMenu($event)"
+      >
+      </orxe-button>
+      <div class="menu--header-section--header">
+        <span>MENU</span>
+      </div>
+    </div>
+    <div class="menu--user-section">
+      <div class="menu--user-section--user-details">
+        <span class="menu--user-section--user-details--username">User Name</span>
+        <span class="menu--user-section--user-details--reward-points">Reward Points</span>
+      </div>
+      <ul>
+        <li class="menu--user-section--user-menu-item"
+            *ngFor="let menuItem of this.userMenuItems"
+            [ngClass]="{'menu--user-section--user-menu-item--active': this.selectedMenuItem.name === menuItem.name}"
+            (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+      </ul>
+    </div>
+    <div class="menu--navigation-section">
+      <ul>
+        <li class="menu--navigation-section--menu-item"
+          *ngFor="let menuItem of this.menuItems"
+          [ngClass]="{'menu--navigation-section--menu-item--active': this.selectedMenuItem.name === menuItem.name}"
+          (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+      </ul>
+    </div>
+    <div class="menu--sign-out-section">
+      <ul>
+        <li>Sign Out</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grey-area" (click)="closeMenu($event)"></div>
+</div>
