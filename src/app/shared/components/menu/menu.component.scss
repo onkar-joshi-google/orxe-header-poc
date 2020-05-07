@@ -22,15 +22,22 @@ $menu-items-font-weight: var(--menu-item-font-weight);
 $menu-background-color: var(--menu-background-color);
 $menu-item-active-background-color: var(--menu-item-active-background-color);
 
+:host([isOpen=false]) {
+  transition: all 5.24s ease;
+  transform: translateX(-100%);
+}
+
+:host([isOpen=true]) {
+  transition: all 5.24s ease;
+  transform: translateX(0);
+}
+
 :host {
   position: fixed;
   top: 0;
   width: 100%;
   display: block;
   font-family: $menu-font-family;
-  background-color: $menu-background-color;
-  // transition: all 5.24s ease;
-  // transform: translateX(-100%);
   ul {
     list-style-type: none;
     padding: 0;
@@ -51,25 +58,32 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
     display: flex;
     height:100vh;
     min-height:100vh;
-    /* &--is-closed {
-      // display: none;
-      transition: all 5.24s ease;
-      transform: translateX(-100%);
-    }
-    &--is-open {
-      transition: all 5.24s ease;
-      transform: translateX(0);
-    } */
   }
   .grey-area{
-    /* position: fixed;
+    z-index: 99;
+    position: fixed;
     width: 100vw;
-    height: 100vh; */
-    width: 64px;
+    height: 100vh;
     background-color: $menu-heading-font-color;
     opacity: 0.4;
+    &--fade-in {
+      animation: fadeIn ease 2s;
+      -webkit-animation: fadeIn ease 2s;
+      -moz-animation: fadeIn ease 2s;
+      -o-animation: fadeIn ease 2s;
+      -ms-animation: fadeIn ease 2s;
+    }
+    &--fade-out {
+      animation: fadeOut ease 2s;
+      -webkit-animation: fadeOut ease 2s;
+      -moz-animation: fadeOut ease 2s;
+      -o-animation: fadeOut ease 2s;
+      -ms-animation: fadeOut ease 2s;
+    }
   }
   .menu {
+    z-index: 100;
+    background-color: $menu-background-color;
     width: calc(100% - 64px);
     &--header-section {
       height: 48px;
