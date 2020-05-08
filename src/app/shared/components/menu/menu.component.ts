@@ -9,7 +9,7 @@ import { MenuItem } from '@app/core/interfaces';
 
 export class MenuComponent implements OnInit {
 
-  @Input() isOpen = false;
+  @Input('isOpen') isOpen = false;
 
   @Input() menuItems: MenuItem[] = [
     { name: 'Link 1', link: 'https://www.google.co.in', active: false },

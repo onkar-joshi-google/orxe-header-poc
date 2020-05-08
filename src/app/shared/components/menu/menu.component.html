@@ -1,6 +1,7 @@
+
 <div class="menu-container"
-     >
-  <div class="menu">
+     [ngClass]="{'menu-container--is-opened': isOpen, 'menu-container--is-closed': !isOpen}">
+  <div class="menu" [ngClass]="{'menu--is-opened': isOpen, 'menu--is-closed': !isOpen}">
     <div class="menu--header-section">
       <orxe-button
         data-testid="clear-button"
@@ -43,5 +44,7 @@
       </ul>
     </div>
   </div>
-  <div class="grey-area" [ngClass]="{'grey-area--fade-in': isOpen, 'grey-area--fade-out': !isOpen}" (click)="closeMenu($event)"></div>
+  <div class="grey-area"
+       [ngClass]="{'grey-area--fade-in': isOpen, 'grey-area--fade-out': !isOpen}"
+       (click)="closeMenu($event)"></div>
 </div>

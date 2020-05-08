@@ -22,16 +22,6 @@ $menu-items-font-weight: var(--menu-item-font-weight);
 $menu-background-color: var(--menu-background-color);
 $menu-item-active-background-color: var(--menu-item-active-background-color);
 
-:host([isOpen=false]) {
-  transition: all 5.24s ease;
-  transform: translateX(-100%);
-}
-
-:host([isOpen=true]) {
-  transition: all 5.24s ease;
-  transform: translateX(0);
-}
-
 :host {
   position: fixed;
   top: 0;
@@ -56,35 +46,49 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
   }
   .menu-container{
     display: flex;
-    height:100vh;
-    min-height:100vh;
+    &--is-opened {
+      height:100vh;
+      min-height:100vh;
+    }
+    &--is-closed {
+
+    }
   }
   .grey-area{
+    // opacity: 0.4;
     z-index: 99;
     position: fixed;
     width: 100vw;
     height: 100vh;
     background-color: $menu-heading-font-color;
-    opacity: 0.4;
+    animation-fill-mode: forwards;
     &--fade-in {
-      animation: fadeIn ease 2s;
-      -webkit-animation: fadeIn ease 2s;
-      -moz-animation: fadeIn ease 2s;
-      -o-animation: fadeIn ease 2s;
-      -ms-animation: fadeIn ease 2s;
+      animation: fade-in ease 2s;
+      -webkit-animation: fade-in ease 2s;
+      -moz-animation: fade-in ease 2s;
+      -o-animation: fade-in ease 2s;
+      -ms-animation: fade-in ease 2s;
     }
     &--fade-out {
-      animation: fadeOut ease 2s;
-      -webkit-animation: fadeOut ease 2s;
-      -moz-animation: fadeOut ease 2s;
-      -o-animation: fadeOut ease 2s;
-      -ms-animation: fadeOut ease 2s;
+      animation: fade-out ease 2s;
+      -webkit-animation: fade-out ease 2s;
+      -moz-animation: fade-out ease 2s;
+      -o-animation: fade-out ease 2s;
+      -ms-animation: fade-out ease 2s;
     }
   }
   .menu {
     z-index: 100;
     background-color: $menu-background-color;
     width: calc(100% - 64px);
+    &--is-closed {
+      transition: all 5.24s ease;
+      transform: translateX(-100%);
+    }
+    &--is-opened {
+      transition: all 5.24s ease;
+      transform: translateX(0);
+    }
     &--header-section {
       height: 48px;
       display: flex;
@@ -147,5 +151,23 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
       font-size: 1.4rem;
       font-weight: $menu-items-font-weight;
     }
+  }
+}
+
+@keyframes fade-in{
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes fade-out{
+  from{
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0;
   }
 }
