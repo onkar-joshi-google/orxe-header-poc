@@ -2,7 +2,7 @@ export interface MenuItem {
   name: string;
   link: string;
   data: MenuData[];
-  hasAccess: boolean;
+  isVisible: boolean;
 }
 
 export interface MenuData {

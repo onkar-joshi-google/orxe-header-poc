@@ -1,4 +1,5 @@
 :host {
+  // TODO: This will come from theme file
   --menu-font-family: 'Proxima Nova', sans-serif;
   --menu-heading-font-color: #242C38;
   --menu-heading-font-weight: 500;
@@ -98,6 +99,9 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
         padding: 16px;
         display: flex;
         justify-content: center;
+      }
+      &--close-button{
+        position: absolute;
       }
     }
     &--user-section {

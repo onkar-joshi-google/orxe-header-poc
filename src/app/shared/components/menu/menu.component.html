@@ -1,11 +1,11 @@
 
 <div class="menu-container"
-     [ngClass]="{'menu-container--active': isOpen}">
+     [ngClass]="{'menu-container--active': isOpen}" aria-hidden="!isOpen">
   <div class="menu">
     <div class="menu--header-section">
       <orxe-button
         data-testid="clear-button"
-        class="input--clear-button"
+        class="input--clear-button menu--header-section--close-button"
         kind="iconOnly"
         icon="ic-close"
         aria-live="polite"
@@ -15,38 +15,40 @@
       >
       </orxe-button>
       <div class="menu--header-section--header">
-        <span>MENU</span>
+        <span>{{ "sideNav.title" | translate }}</span>
       </div>
     </div>
     <div class="menu--user-section">
       <div class="menu--user-section--user-details">
         <span class="menu--user-section--user-details--username">User Name</span>
-        <span class="menu--user-section--user-details--reward-points">Reward Points</span>
+        <span class="menu--user-section--user-details--reward-points">500 Points</span>
       </div>
-      <ul>
-        <ng-container *ngFor="let menuItem of this.userMenuItems">
-          <ng-container *ngIf="menuItem.hasAccess">
-            <li class="menu--user-section--user-menu-item"
-            [ngClass]="{'menu--user-section--user-menu-item--active': this.selectedMenuItem.name === menuItem.name}"
-            (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+      <nav>
+        <ul aria-label="Menu">
+          <ng-container *ngFor="let menuItem of this.userMenuItems">
+            <ng-container *ngIf="menuItem.isVisible">
+              <li class="menu--user-section--user-menu-item"
+              [ngClass]="{'menu--user-section--user-menu-item--active': this.selectedMenuItem.name === menuItem.name}"
+              (click)="selectMenuItem(menuItem)"><a href="#">{{menuItem.name}}</a></li>
+            </ng-container>
           </ng-container>
-        </ng-container>
-      </ul>
+        </ul>
+      </nav>
     </div>
     <div class="menu--navigation-section">
       <ul>
         <ng-container *ngFor="let menuItem of this.menuItems">
-          <ng-container *ngIf="menuItem.hasAccess">
+          <ng-container *ngIf="menuItem.isVisible">
             <li class="menu--navigation-section--menu-item"
                 [ngClass]="{'menu--navigation-section--menu-item--active': this.selectedMenuItem.name === menuItem.name}"
-                (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+                (click)="selectMenuItem(menuItem)"><a href="">{{menuItem.name}}</a></li>
           </ng-container>
         </ng-container>
       </ul>
     </div>
     <div class="menu--sign-out-section">
       <ul>
-        <li>Sign Out</li>
+        <li>{{ "sideNav.signOut" | translate }}</li>
       </ul>
     </div>
   </div>
