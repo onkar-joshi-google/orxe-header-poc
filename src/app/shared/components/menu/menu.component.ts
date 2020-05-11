@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 import { MenuItem } from '@app/core/interfaces';
 
 @Component({
@@ -9,17 +10,17 @@ import { MenuItem } from '@app/core/interfaces';
 
 export class MenuComponent implements OnInit {
 
-  @Input('isOpen') isOpen = false;
+  @Input() isOpen = false;
 
   @Input() menuItems: MenuItem[] = [
-    { name: 'Link 1', link: 'https://www.google.co.in', active: false },
-    { name: 'Link 2', link: 'https://www.google.co.in', active: false },
-    { name: 'Link 3', link: 'https://www.google.co.in', active: false }
+    { name: 'Link 1', link: 'https://www.google.co.in', data: [] },
+    { name: 'Link 2', link: 'https://www.google.co.in', data: [] },
+    { name: 'Link 3', link: 'https://www.google.co.in', data: [] }
   ];
 
   @Input() userMenuItems: MenuItem[] = [
-    { name: 'User Link 1', link: 'https://www.google.co.in', active: false },
-    { name: 'User Link 2', link: 'https://www.google.co.in', active: false }
+    { name: 'User Link 1', link: 'https://www.google.co.in', data: [] },
+    { name: 'User Link 2', link: 'https://www.google.co.in', data: [] }
   ];
 
   @Output() menuClosed = new EventEmitter<boolean>();
@@ -46,7 +47,6 @@ export class MenuComponent implements OnInit {
 
   selectMenuItem(item) {
     this.selectedMenuItem = Object.assign(item);
-    this.selectedMenuItem.active = true;
   }
 
 }

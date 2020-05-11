@@ -1,5 +1,9 @@
 export interface MenuItem {
   name: string;
   link: string;
-  active: boolean;
+  data: MenuData[];
+}
+
+export interface MenuData {
+  id: number;
 }
