@@ -24,18 +24,24 @@
         <span class="menu--user-section--user-details--reward-points">Reward Points</span>
       </div>
       <ul>
-        <li class="menu--user-section--user-menu-item"
-            *ngFor="let menuItem of this.userMenuItems"
+        <ng-container *ngFor="let menuItem of this.userMenuItems">
+          <ng-container *ngIf="menuItem.hasAccess">
+            <li class="menu--user-section--user-menu-item"
             [ngClass]="{'menu--user-section--user-menu-item--active': this.selectedMenuItem.name === menuItem.name}"
             (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+          </ng-container>
+        </ng-container>
       </ul>
     </div>
     <div class="menu--navigation-section">
       <ul>
-        <li class="menu--navigation-section--menu-item"
-          *ngFor="let menuItem of this.menuItems"
-          [ngClass]="{'menu--navigation-section--menu-item--active': this.selectedMenuItem.name === menuItem.name}"
-          (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+        <ng-container *ngFor="let menuItem of this.menuItems">
+          <ng-container *ngIf="menuItem.hasAccess">
+            <li class="menu--navigation-section--menu-item"
+                [ngClass]="{'menu--navigation-section--menu-item--active': this.selectedMenuItem.name === menuItem.name}"
+                (click)="selectMenuItem(menuItem)">{{menuItem.name}}</li>
+          </ng-container>
+        </ng-container>
       </ul>
     </div>
     <div class="menu--sign-out-section">

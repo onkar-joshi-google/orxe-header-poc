@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { MenuItem } from '@app/core/interfaces';
+import { MenuService } from '@app/core/services';
 
 @Component({
   selector: 'app-menu',
@@ -12,41 +13,31 @@ export class MenuComponent implements OnInit {
 
   @Input() isOpen = false;
 
-  @Input() menuItems: MenuItem[] = [
-    { name: 'Link 1', link: 'https://www.google.co.in', data: [] },
-    { name: 'Link 2', link: 'https://www.google.co.in', data: [] },
-    { name: 'Link 3', link: 'https://www.google.co.in', data: [] }
-  ];
-
-  @Input() userMenuItems: MenuItem[] = [
-    { name: 'User Link 1', link: 'https://www.google.co.in', data: [] },
-    { name: 'User Link 2', link: 'https://www.google.co.in', data: [] }
-  ];
-
+  @Output() menuItemSelected = new EventEmitter<MenuItem>();
   @Output() menuClosed = new EventEmitter<boolean>();
 
-  selectedMenuItem = this.menuItems[0];
+  menuItems: MenuItem[];
+  userMenuItems: MenuItem[];
+  selectedMenuItem: MenuItem;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private menuService: MenuService) {
   }
 
-  closeMenu(event) {
+  ngOnInit() {
+    this.menuItems = this.menuService.getMenuItems();
+    this.userMenuItems = this.menuService.getUserMenuItems();
+    this.selectedMenuItem = this.menuItems[0];
+  }
+
+  closeMenu(event?) {
     this.isOpen = false;
     this.menuClosed.emit(false);
   }
 
-  _handleCloseMenuBlur(event) {
-    console.log(event);
-  }
-
-  _handleCloseMenuFocus(event) {
-    console.log(event);
-  }
-
   selectMenuItem(item) {
     this.selectedMenuItem = Object.assign(item);
+    this.menuItemSelected.emit(item);
+    this.closeMenu();
   }
 
 }
