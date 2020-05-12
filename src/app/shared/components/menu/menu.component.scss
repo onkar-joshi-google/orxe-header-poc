@@ -1,27 +1,17 @@
 :host {
-  // TODO: This will come from theme file
-  --menu-font-family: 'Proxima Nova', sans-serif;
-  --menu-heading-font-color: #242C38;
-  --menu-heading-font-weight: 500;
-  --menu-username-font-color: #242C38;
-  --menu-item-font-color: #505660;
-  --menu-user-active-menu-item-font-color: #0A57A1;
-  --menu-item-font-weight: 400;
-  --menu-background-color: #FFFFFF;
-  --menu-item-active-background-color: #F5F8FB;
-  --menu-section-separator: #E1E6ED;
+  --menu-username-font-color: var(--primary-text);
 }
 
-$menu-section-separator: var(--menu-section-separator);
-$menu-font-family: var(--menu-font-family);
-$menu-heading-font-color: var(--menu-heading-font-color);
-$menu-heading-font-weight: var(--menu-heading-font-weight);
+$menu-section-separator: var(--separator-01);
+$menu-font-family: var(--global-font-family);
+$menu-heading-font-color: var(--primary-text);
+$menu-heading-font-weight: var(--font-weight-regular);
 $menu-username-font-color: var(--menu-username-font-color);
-$menu-item-font-color: var(--menu-item-font-color);
-$menu-user-active-menu-item-font-color: var(--menu-user-active-menu-item-font-color);
+$menu-item-font-color: var(--secondary-text);
+$menu-active-menu-item-font-color: var(--secondary);
 $menu-items-font-weight: var(--menu-item-font-weight);
-$menu-background-color: var(--menu-background-color);
-$menu-item-active-background-color: var(--menu-item-active-background-color);
+$menu-background-color: var(--neutral);
+$menu-item-active-background-color: var(--background-01);
 
 :host {
   position: fixed;
@@ -130,7 +120,7 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
         color: $menu-item-font-color;
         font-weight: $menu-items-font-weight;
         &--active {
-          color: $menu-user-active-menu-item-font-color;
+          color: $menu-active-menu-item-font-color;
           background-color: $menu-item-active-background-color;
         }
       }
@@ -142,7 +132,7 @@ $menu-item-active-background-color: var(--menu-item-active-background-color);
       &--menu-item {
         color: $menu-item-font-color;
         &--active {
-          color: $menu-user-active-menu-item-font-color;
+          color: $menu-active-menu-item-font-color;
           background-color: $menu-item-active-background-color;
         }
       }
