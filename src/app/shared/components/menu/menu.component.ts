@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { MenuItem } from '@app/core/interfaces';
-import { MenuService } from '@app/core/services';
+import { MenuService } from '@app/core/services/menu.service';
 
 @Component({
   selector: 'app-menu',

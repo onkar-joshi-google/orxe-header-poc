@@ -1,7 +1,7 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
-import { MenuService } from '../../../core/services';
+import { MenuService } from '@app/core/services/menu.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CultureModule } from '@orxe-culture/angular';
 
