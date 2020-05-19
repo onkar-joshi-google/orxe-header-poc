@@ -4,5 +4,9 @@
     "flights": "Flights",
     "cars": "Cars",
     "activities": "Activities"
+  },
+  "sideNav": {
+    "title": "Menu",
+    "signOut": "Sign Out"
   }
 }

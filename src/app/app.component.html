@@ -1,6 +1,10 @@
 <orxe-header fixed left-icon="ic-menu"
       logo-path="assets/logo/src_assets_logo_cxloyalty-logo-footer.png"
       alt-text="cxLoyalty Logo">
+      <!-- (onLeftIconClick)="toggleMenu(true)"> -->
+      <!-- TODO: uncomment this line and remove the button when the new version of header has been published -->
 </orxe-header>
+<button (click)="toggleMenu(true)">Open Menu</button>
 <app-home></app-home>
+<app-menu [isOpen]="isMenuOpen" (menuClosed)="toggleMenu(false)"></app-menu>
 <router-outlet></router-outlet>

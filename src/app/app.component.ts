@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'orxe-shell';
+
+  isMenuOpen = false;
+
+  toggleMenu(value) {
+    this.isMenuOpen = value;
+  }
+
 }

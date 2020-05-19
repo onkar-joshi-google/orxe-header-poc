@@ -1,6 +1,6 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthGuardService, HttpService } from '@orxe-core/services';
+import { AuthGuardService, HttpService, MenuService } from '@orxe-core/services';
 
 @NgModule({
   declarations: [],
@@ -9,7 +9,8 @@ import { AuthGuardService, HttpService } from '@orxe-core/services';
   ],
   providers: [
     AuthGuardService,
-    HttpService
+    HttpService,
+    MenuService
   ]
 })
 export class CoreModule {
