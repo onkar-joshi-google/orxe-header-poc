@@ -9,7 +9,6 @@ import { ShellSdkModule } from 'shell-sdk';
 import { microAppRoutes } from './orxe-routes';
 import { CoreModule } from '@orxe-core/core.module';
 import { environment } from '@env/environment';
-import { HomeModule } from './home/home.module';
 import { SharedModule } from '@orxe-shared/shared.module';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { SharedModule } from '@orxe-shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HomeModule,
     SharedModule,
     ShellSdkModule.forMicroApps({ routeConfigs: microAppRoutes, appConfig: { baseUrl: environment.baseUrl } })
   ],
