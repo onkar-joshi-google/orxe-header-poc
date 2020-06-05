@@ -1,8 +1,13 @@
 <orxe-header fixed 
-      left-icon="ic-menu"
-      logo-path="assets/logo/src_assets_logo_cxloyalty-logo-footer.png"
+      attr.left-icon="{{ headerDetails.leftIcon }}"
       alt-text="cxLoyalty Logo" 
-      (onLeftIconClick)="toggleMenu(true)">
+      (onLeftIconClick)="toggleMenu(true)"
+      attr.logo-path="{{ headerDetails?.title ? '' : 'assets/logo/src_assets_logo_cxloyalty-logo-footer.png' }}"
+      title="{{ headerDetails?.title ? headerDetails.title : ''}}"
+      attr.sub-title="{{ headerDetails?.subtitle && headerDetails?.title ? headerDetails.subtitle : ''}}">
 </orxe-header>
 <app-menu [isOpen]="isMenuOpen" (menuClosed)="toggleMenu(false)"></app-menu>
+<app-cbtest></app-cbtest>
+<br/>
+<button (click)="toggleHeaderIcon()">Change Header</button>
 <router-outlet></router-outlet>

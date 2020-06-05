@@ -10,11 +10,13 @@ import { microAppRoutes } from './orxe-routes';
 import { CoreModule } from '@orxe-core/core.module';
 import { environment } from '@env/environment';
 import { SharedModule } from '@orxe-shared/shared.module';
+import { CbtestComponent } from './cbtest/cbtest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    CbtestComponent
   ],
   imports: [
     BrowserModule,
